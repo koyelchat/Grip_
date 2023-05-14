@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donation Website</title>
+  <style>
+    /* Global styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      color: bisque;
+
+    }
+     h2, p {
+      margin: 0;
+      padding: 0;
+    }
+    /* Header styles */
+    header {
+      background-color: #3f3f3d;
+      padding: 20px;
+      text-align: center;
+    }
+    /* Main content styles */
+    main {
+      background-color: #efd16f;
+      padding: 20px;
+      height: calc(100vh - 200px);
+    }
+    section {
+      margin-bottom: 20px;
+    }
+    form {
+      margin-top: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="number"],
+    input[type="text"],
+    input[type="email"],
+    button[type="submit"] {
+      margin-bottom: 10px;
+      padding: 5px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    /* Footer styles */
+    footer {
+      background-color: #f2f2f2;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Thank You for Donating</h1>
+    <!-- Add your navigation menu or logo here -->
+  </header>
+
+  <main>
+    <section>
+      <h2>Make a Donation</h2>
+      <p>Support our cause by making a donation today!</p>
+      <form id="donation-form" action="process_donation.php" method="POST">
+        <label for="amount">Donation Amount:</label>
+        <input type="number" name="amount" id="amount" step="0.01" min="1" required>
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+
+        <button type="button" onclick="makePayment()">Donate Now</button>
+      </form>
+    </section>
+
+    <!-- Add more sections, such as information about your cause, impact stories, etc. -->
+
+  </main>
+
+  <footer>
+    <p>Thank you for your support!</p>
+    <!-- Add additional footer content, such as contact information or social media links -->
+  </footer>
+
+  <script>
+    function makePayment() {
+      var amount = document.getElementById('amount').value;
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+  
+      var options = {
+        key: 'rzp_test_wAy2wJE0eGygch', // Replace with your Razorpay Key ID
+        amount: amount *100 , // Amount in paise or smallest currency unit
+        currency: 'INR', // Replace with your desired currency code
+        name: 'The Sparks Foundation',
+        description: 'Donation',
+        handler: function(response) {
+          // Handle the payment success response here
+          document.getElementById('donation-form').submit();
+        },
+        prefill: {
+          name: name,
+          email: email
+        }
+      };
+  
+      var rzp = new Razorpay(options);
+      rzp.open();
+    }
+  </script>
+  </body>
+  </html>

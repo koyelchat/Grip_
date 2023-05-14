@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f2f2f2;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0 20px;
+    background-color: #31312d;
+    border-bottom: 1px solid #eea022;
+}
+
+.logo img {
+    height: 30px;
+    padding-left: 10px;
+
+}
+
+.title h1 {
+    font-size: 25px;
+    font-weight: bold;
+    color: #f9f7f7;
+    padding-right: 850px;
+}
+
+nav ul {
+
+    display: flex;
+    list-style: none;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fcf2f2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    background-image: url(image/glodie.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 100px);
+}
+
+h1 {
+
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+p {
+
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.donate-button {
+
+    display: inline-block;
+    padding: 20px 40px;
+    background-color: #f1f17a;
+    color: #010101;
+    font-size: 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.donate-button:hover {
+    background-color: #d7c92f;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
